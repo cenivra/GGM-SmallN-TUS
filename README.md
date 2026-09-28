@@ -1,5 +1,8 @@
 # GGM Small-n — Redes psicométricas en muestras pequeñas
 
+![Estado: investigación en proceso](https://img.shields.io/badge/estado-investigaci%C3%B3n%20en%20proceso-orange)
+![Datos: no incluidos](https://img.shields.io/badge/datos-no%20incluidos-lightgrey)
+
 Material de investigación para estimar y **decidir** en redes gaussianas gráficas cuando el
 cociente entre observaciones y variables es desfavorable, con el trastorno por consumo de
 sustancias (TUS) como banco de pruebas clínico.
