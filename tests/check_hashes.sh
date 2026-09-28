@@ -11,8 +11,8 @@ ok=0; fallos=0; faltan=0
 while IFS= read -r linea; do
   [ -z "$linea" ] && continue
   case "$linea" in \#*) continue ;; esac
-  h=$(printf '%s' "$linea" | cut -d' ' -f1)
-  f=$(printf '%s' "$linea" | cut -d' ' -f2-)
+  h="${linea%% *}"
+  f="${linea#* }"; f="${f# }"; f="${f%$'\r'}"
   if [ ! -f "$f" ]; then echo "FALTA      $f"; faltan=$((faltan+1)); continue; fi
   case "$f" in
     *.png|*.jpg|*.jpeg|*.gif|*.pdf|*.zip|*.gz|*.rds|*.RData|*.sqlite)
