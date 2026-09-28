@@ -7,8 +7,12 @@ Dos fases con propósitos distintos, y por eso con unidades distintas.
 - **Bloque de subescala**: seis tamaños muestrales y tres números de variables.
 - **Bloque de ítem**: dos números de variables y cuatro tamaños muestrales, elegidos de modo que
   el régimen n < p exista de verdad.
-- **Factores**: tipo de escala (continua y dos ordinales), asimetría, arquitectura topológica y
-  calidad del prior.
+- **Factores manipulados**: tamaño muestral, número de variables (que proviene del instrumento o de la
+  combinación de instrumentos de cada condición) y marco de estimación, aplicado a todas las réplicas de
+  cada condición.
+- **No son factores**: el tipo de escala (viene del instrumento: de 3 a 7 categorías de respuesta), la
+  estructura de la red verdadera (fija por el mecanismo estructural: bloques de los instrumentos más las
+  aristas puente teóricas) y la asimetría (no se varía).
 - **Marcos comparados sobre el mismo diseño**: la familia regularizada con dos valores de rigor
   distintos, el motor de este proyecto y la familia bayesiana.
 - **Réplicas**: mínimo 30 por celda, objetivo 100.
