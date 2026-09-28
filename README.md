@@ -1,64 +1,78 @@
-# GGM Small-n — Redes psicométricas en muestras pequeñas (TUS)
+# GGM Small-n — Redes psicométricas en muestras pequeñas
 
-Material de investigación del proyecto **GGM Small-n**: un marco para estimar y decidir en
-redes gaussianas gráficas cuando el cociente entre observaciones y variables es desfavorable, con
-el trastorno por consumo de sustancias (TUS) como banco de pruebas.
+Material de investigación para estimar y **decidir** en redes gaussianas gráficas cuando el
+cociente entre observaciones y variables es desfavorable, con el trastorno por consumo de
+sustancias (TUS) como banco de pruebas clínico.
 
-El repositorio contiene **el código del motor, el diseño de simulación congelado, los resultados
-agregados y la verificación de la bibliografía**. No contiene datos de pacientes.
+> Investigación en proceso. Este repositorio publica la especificación de los datos, la
+> documentación metodológica, el registro de experimentos y las huellas de integridad. **No**
+> incluye el motor de estimación, el manuscrito ni datos de personas.
 
-Estado: **en preparación** (el manuscrito principal va a *Psychometrika*, sección Theory and
-Methods). Lo que aún no existe se declara como tal en `CHANGELOG.md`, en la sección «Qué NO está
-aquí».
+## Qué contiene
+
+- **`data_spec/`** — qué instrumentos y variables existen, con los recuentos confirmados contra la
+  base pseudonimizada.
+- **`docs/`** — metodología (diseño de simulación y calibración, esta última sin sus valores),
+  gobernanza del registro, integridad y plan de publicaciones.
+- **`code/`** — las **características** del motor: qué recibe, qué devuelve, qué familias
+  implementa y qué se reserva hasta la publicación. El código no está todavía.
+- **`experimentos/`** — el diario y el registro tabular de cada corrida: qué se corrió, cuándo, con
+  qué entradas, y con qué resultado en términos de estado (nunca los valores).
+- **`manifests/`** — huellas SHA-256 de lo publicado.
+- **`results/`** — tablas y figuras derivadas, sin identificadores (vacía: se publican con el
+  artículo).
+- **`tests/`** — el generador y el verificador de manifiestos.
 
 ## Estructura
 
 ```
-R/                    El motor: dos versiones del pipeline y sus módulos
-  README.md             qué hace cada script y en qué orden se ejecutan
-analysis/
-  README.md             el análisis: diseño, calibración y resultados reproducibles
-  diseno_simulacion/    el diseño factorial congelado (Fase I y Fase II)
-  calibracion/          la tabla de calibración por régimen (gamma, lambda, umbral)
-  resultados/           resultados agregados, figuras y el registro de experimentos
-docs/                 Documentación técnica y gobernanza
-  NOTA_sobre_los_datos.md    procedencia de los datos y condiciones de acceso
-  diccionario_variables.md   instrumentos, subescalas y tamaños muestrales (sin filas)
-  gobernanza_y_registro.md   cómo se registra cada corrida y qué la hace auditable
-  PLAN_DE_PUBLICACIONES.md   qué artículos salen de este trabajo y qué evidencia usa cada uno
-manuscript/           Las fuentes LaTeX del artículo principal y su verificación
-verificacion/         Informes de verificación: bibliografía, trazabilidad, auditorías
-results/              Tablas y figuras derivadas, sin identificadores
-tests/                Pruebas del sistema de registro experimental
+code/            características del motor (el código, tras la publicación)
+data_spec/       codebook y convenciones: instrumentos, variables, llaves, valores ausentes
+docs/            metodología, gobernanza, integridad, decisiones, plan de publicaciones
+  metodologia/     diseño de simulación y calibración (estructura, sin valores)
+experimentos/    diario de laboratorio y registro de corridas
+manifests/       huellas SHA-256 de lo publicado
+results/         tablas y figuras derivadas, sin identificadores
+tests/           generar_manifiesto.py · check_hashes.sh
 ```
 
-## Cómo reproducir
+## Qué se mide, y qué se puede concluir
 
-1. Instala R (4.x) y los paquetes que declaran los scripts del motor; requieren `qgraph`,
-   `glasso`, `huge`, `BDgraph`, `bootnet` y `parallel`.
-2. Los scripts esperan la base clínica **fuera del repositorio**. La ruta se configura en el
-   script; no se versiona ninguna ruta local.
-3. El motor se ejecuta en dos versiones (pipeline psicométrico y pipeline de aprendizaje) y
-   comparte los módulos de calibración, métricas y registro.
-4. Las tablas y figuras de `results/` se regeneran desde `analysis/resultados/`.
+- El proyecto estudia **cuándo el procedimiento estándar falla** al estimar una red con pocas
+  observaciones, y cómo decidir en consecuencia. Un resultado que aquí importa es la **tasa de
+  redes vacías**: un método que devuelve una red vacía no falla en silencio, falla de forma
+  medible.
+- Con datos clínicos reales **no se puede hablar de recuperación estructural**: no existe grafo
+  verdadero. Eso se sostiene con simulación, y así se declara en cada tabla.
+- Las dos fases son **muestras distintas con propósitos distintos**: la de simulación prueba
+  propiedades del motor; las clínicas describen una población. Las cifras de una no son las de la
+  otra y no se suman.
 
-## Resultados que reproducirá este repositorio
+## Cómo se reproduce
 
-| tabla del manuscrito | de dónde sale |
-|---|---|
-| Tasa de redes vacías y métricas por régimen | `analysis/resultados/` (rejilla de Fase I) |
-| Tabla de calibración por banda de n/p | `analysis/calibracion/` |
-| Correspondencia entre la utilidad del artículo y la recompensa del motor | `docs/` y el anexo del manuscrito |
+1. El código se incorpora cuando el artículo esté publicado; mientras tanto, este repositorio
+   permite auditar **qué** se hizo y **cuándo**, que es lo que sostiene la trazabilidad.
+2. Los datos clínicos viven fuera del repositorio. Ver `docs/NOTA_sobre_los_datos.md`.
+3. Los manifiestos se verifican con un comando (abajo).
 
-## Qué NO está aquí, y por qué
+## Verificación en un comando
 
-- **Datos de pacientes.** La base clínica pseudonimizada vive fuera del repositorio y no se
-  distribuye. Ver `docs/NOTA_sobre_los_datos.md`.
-- **Los microdatos de simulación por réplica** con rutas locales: la rejilla agregada sí entra,
-  los archivos con rutas absolutas del equipo se sanean antes de publicarse.
-- **Los informes de delegación** (auditorías internas de los agentes y sus refutaciones): son
-  material de proceso y viven en el proyecto de trabajo.
-- **Los datos originales** de captura (hojas de cálculo) y cualquier archivo con identificadores.
+```bash
+bash tests/check_hashes.sh
+```
+
+Compara cada archivo publicado con su huella en `manifests/SHA256_REPO.txt` y reporta cuántos
+verificados, distintos y faltantes hay. Para regenerar el manifiesto después de un cambio:
+
+```bash
+python tests/generar_manifiesto.py
+```
+
+## Datos no incluidos
+
+Ningún dato de personas, ni pseudonimizado. La base vive fuera del repositorio y su acceso se
+solicita al comité de ética del proyecto. Los conteos por instrumento están en
+`data_spec/codebook.md`; las condiciones de acceso, en `docs/NOTA_sobre_los_datos.md`.
 
 ## Cita
 
@@ -66,5 +80,4 @@ Ver `CITATION.cff`.
 
 ## Licencia
 
-MIT para el código (ver `LICENSE`). La documentación y las tablas se comparten con la misma
-licencia salvo que un archivo diga otra cosa.
+MIT para el material de este repositorio (ver `LICENSE`).

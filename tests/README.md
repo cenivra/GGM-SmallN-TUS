@@ -1,12 +1,12 @@
 # Pruebas
 
-Pruebas del sistema de registro experimental, que es la parte del proyecto cuya corrección no se
-puede verificar leyendo: un registrador que pierde un asiento o reutiliza un identificador produce
-evidencia que parece buena y no lo es.
+Dos cosas distintas conviven aquí:
 
-Cubre: apertura y cierre de una corrida, asignación y estabilidad de identificadores, detección de
-artefactos nuevos, modificados, sin cambios y eliminados, escritura del asiento con el estado de
-ejecución, y el caso de fallo con su aviso.
+1. **Integridad del repositorio**: `generar_manifiesto.py` y `check_hashes.sh`, que producen y
+   verifican las huellas SHA-256 de `manifests/`.
+2. **Pruebas del sistema de registro** (cuando el código se publique): apertura y cierre de una
+   corrida, estabilidad de identificadores, detección de artefactos nuevos, modificados y
+   eliminados, y el caso de fallo controlado.
 
 ## Regla
 
