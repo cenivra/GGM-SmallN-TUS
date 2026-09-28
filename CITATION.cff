@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "Si usas este código o estos materiales, cita el artículo o el repositorio."
+title: "GGM Small-n: estimación y decisión en redes gaussianas gráficas con muestras pequeñas"
+abstract: >-
+  Marco metodológico para estimar redes gaussianas gráficas cuando el cociente entre
+  observaciones y variables es desfavorable, con el trastorno por consumo de sustancias como
+  banco de pruebas. El repositorio contiene el motor de estimación, el diseño de simulación
+  congelado, la calibración por régimen, los resultados agregados y la verificación
+  bibliográfica. No contiene datos de pacientes.
+type: software
+authors:
+  - family-names: "Gutiérrez Castro"
+    given-names: "Lauro"
+    affiliation: "Comunidad Terapéutica Under The Tree, Jalisco, México"
+license: MIT
+version: "0.1.0"
+date-released: "2026-09-27"
+keywords:
+  - redes gaussianas gráficas
+  - psicometría de redes
+  - muestras pequeñas
+  - trastorno por consumo de sustancias
+  - recuperación estructural

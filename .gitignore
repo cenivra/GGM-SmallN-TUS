@@ -1,0 +1,51 @@
+# ---- Datos de personas: nunca se versionan ----
+datos/
+*.sqlite
+*.sqlite3
+*.db
+*.RData
+.RData
+*.rds
+*.xlsx
+*.xls
+*.csv.bak
+historical/
+historical/sesiones_R/
+
+# ---- Rutas y credenciales ----
+.env
+.env.*
+*.key
+*_credenciales*
+*credenciales*
+
+# ---- Artefactos de herramientas y perfiles de agente ----
+.commandcode/
+.claude/
+.cursor/
+.aider/
+.omp-deleg/
+__pycache__/
+*.py[cod]
+.Rproj.user/
+.Rhistory
+.Rapp.history
+
+# ---- Auxiliares de LaTeX (el .tex y el .pdf sí se versionan) ----
+*.aux
+*.log
+*.bcf
+*.blg
+*.run.xml
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.bbl
+
+# ---- Sistema ----
+Thumbs.db
+Desktop.ini
+~$*
+*.tmp
