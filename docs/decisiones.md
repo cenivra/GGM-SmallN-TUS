@@ -28,3 +28,15 @@ decisiones que cambian el análisis o la publicación, no las de formato.
 - **Decisión**: privado mientras el artículo no esté enviado.
 - **Criterio**: el material de proceso y los avances previos al envío no se exponen; el registro de
   experimentos y los manifiestos ya fijan la trazabilidad.
+
+## 2026-10-25 — Adopción del Modelo de Probabilidad Mediana (PPI >= 0.50) en estimación bayesiana
+
+- **Decisión**: sustituir la regla de selección modal MAP (*Maximum A Posteriori*) por el Modelo de Probabilidad Mediana ($PPI \ge 0.50$, Barbieri & Berger, 2004) como criterio de inclusión de aristas en las cadenas MCMC de `BDgraph`.
+- **Alternativa considerada**: mantener MAP o aplicar umbrales marginales más liberales ($PPI \ge 0.40$) o conservadores ($PPI \ge 0.60$).
+- **Criterio**: en muestras ultra-pequeñas ($n=15$), la masa posterior de grafos está dispersa; MAP selecciona aristas con baja frecuencia marginal, deprimiendo la precisión al $9.8\%$. El corte $PPI \ge 0.50$ reduce sustancialmente los falsos descubrimientos (+30.8% a +45.2% de precisión) manteniendo cero colapsos a redes vacías (0.0%).
+
+## 2026-10-25 — Descontinuación de la penalización asintótica gamma = 0.50 para n <= 30 en EBIC
+
+- **Decisión**: no utilizar EBICglasso con $\gamma = 0.50$ en regímenes de muestra pequeña ($n \le 30$).
+- **Alternativa considerada**: calibrar el umbral numérico de poda post-hoc ($|r| > 0.08 \to 0.00$).
+- **Criterio**: la experimentación controlada (EXP-019) demostró invarianza idéntica entre umbrales post-hoc ($81.67\%$ de redes vacías en todas las condiciones de umbral). El colapso es causado directamente por la penalización combinatoria $4\gamma |E| \log(p)$ en la función objetivo EBIC, que domina sobre la log-verosimilitud en muestras pequeñas y fuerza la selección de la red vacía.

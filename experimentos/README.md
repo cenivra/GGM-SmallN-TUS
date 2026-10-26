@@ -20,6 +20,13 @@ cuándo se hizo algo y con qué, sin depender de la memoria de nadie.
 | `hash_entrada` / `hash_salida` | SHA-256 de la entrada y de la salida |
 | `nota` | lo que no cabe en una columna |
 
+## Entradas detalladas
+
+Los experimentos que introducen decisiones metodológicas mayores poseen una entrada detallada en
+`experimentos/entradas/`:
+- `2026-10-25_EXP-018.md`: evaluación de filtrado marginal posterior bayesiano (PPI 0.40, 0.50, 0.60 vs MAP).
+- `2026-10-25_EXP-019.md`: calibración paramétrica de umbrales post-hoc sobre EBICglasso ($\gamma = 0.50$).
+
 ## Qué NO se registra aquí
 
 - **Los valores de los resultados.** El registro fija que una corrida existió y qué produjo en

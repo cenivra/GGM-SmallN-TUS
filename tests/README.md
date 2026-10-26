@@ -4,7 +4,11 @@ Dos cosas distintas conviven aquí:
 
 1. **Integridad del repositorio**: `generar_manifiesto.py` y `check_hashes.sh`, que producen y
    verifican las huellas SHA-256 de `manifests/`.
-2. **Pruebas del sistema de registro** (cuando el código se publique): apertura y cierre de una
+2. **Reproducibilidad científica de experimentos**: `verificar_experimentos.py`, que valida
+   el emparejamiento estricto de condiciones y réplicas, la invarianza paramétrica y la consistencia
+   de métricas sobre los conjuntos de datos de simulación abiertos (`results/simulacion/`), sin
+   dependencias de datos clínicos restringidos.
+3. **Pruebas del sistema de registro** (cuando el código se publique): apertura y cierre de una
    corrida, estabilidad de identificadores, detección de artefactos nuevos, modificados y
    eliminados, y el caso de fallo controlado.
 
