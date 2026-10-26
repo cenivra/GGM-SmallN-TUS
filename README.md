@@ -22,12 +22,12 @@ sustancias (TUS) como banco de pruebas clínico.
   implementa y qué se reserva hasta la publicación. El código de producción se incorpora tras la
   publicación del artículo.
 - **`experimentos/`** — el diario de laboratorio (`entradas/`) y el registro tabular (`registro.csv`)
-  de las corridas cerradas (EXP-015, EXP-017, EXP-018, EXP-019): qué se corrió, cuándo, con qué
+  de las corridas cerradas (EXP-015, EXP-017, EXP-018, EXP-019, EXP-020, EXP-021): qué se corrió, cuándo, con qué
   entradas y su estado.
 - **`manifests/`** — huellas criptográficas SHA-256 de todo el árbol publicado.
 - **`results/`** — tablas cuantitativas derivadas sin identificadores personales:
-  - `results/simulacion/`: resultados brutos de simulación sintética de EXP-018 (MPM bayesiano) y
-    EXP-019 (calibración EBIC).
+  - `results/simulacion/`: resultados brutos de simulación sintética de EXP-018 (MPM bayesiano),
+    EXP-019 (calibración EBIC), EXP-020 (camino continuo y AUC ROC) y EXP-021 (calibración de gamma y diagnóstico).
 - **`tests/`** — el generador de manifiestos, el verificador de hashes y la suite de pruebas
   de reproducibilidad científica (`verificar_experimentos.py`).
 

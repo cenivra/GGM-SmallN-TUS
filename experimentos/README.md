@@ -26,6 +26,8 @@ Los experimentos que introducen decisiones metodológicas mayores poseen una ent
 `experimentos/entradas/`:
 - `2026-10-25_EXP-018.md`: evaluación de filtrado marginal posterior bayesiano (PPI 0.40, 0.50, 0.60 vs MAP).
 - `2026-10-25_EXP-019.md`: calibración paramétrica de umbrales post-hoc sobre EBICglasso ($\gamma = 0.50$).
+- `2026-10-25_EXP-020.md`: exploración del camino continuo de regularización $\ell_1$ ($n_\lambda=100$) y capacidad latente AUC ROC.
+- `2026-10-25_EXP-021.md`: calibración del hiperparámetro de penalización $\gamma \in \{0.00, 0.10, 0.25, 0.50\}$ y diagnóstico estratificado en $n=30, p=6$.
 
 ## Qué NO se registra aquí
 
